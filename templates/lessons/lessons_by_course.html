@@ -1,0 +1,69 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="accordion" id="accordionExample">
+                    <div class="card" style="margin:10px 0;">
+                        <div id="" class="collapse show"
+                             aria-labelledby="" data-parent="#accordionExample">
+                            <div class="card-body" style="padding:0;">
+                                <table style="width: 100%;">
+                                    {% for lesson in lessons %}
+                                        <tr style="width: 100%; padding: 5px 0px;">
+                                            <td style="text-align: left;padding:10px; border-bottom:1px solid #ccc;">
+                                                <a href="{% url 'accounts:course-lessons-single' slug=course.slug id=lesson.id %}"
+                                                   id="{{ lesson.id }}">
+                                                    <i class="fa fa-play"
+                                                       style="font-size: 12px;color: #909090;padding: 10px;"></i>
+                                                    {{ lesson.title }}
+                                                </a>
+                                            </td>
+                                            <td style="text-align: right; padding:10px; border-bottom:1px solid #ccc;">
+                                                <span class="lesson_duration">
+                                                    {{ lesson.duration | floatformat:2 }}
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9" id="video_player_area">
+                <div class="" style="background-color: #333;">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="100%" height="500" class="embed-responsive-item"
+                                src="https://www.youtube.com/embed/1_o9CRppen4?list=PLkaw0e--EVbCv_-UnjiBgs55HgJCvmM8b" frameborder="0"
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            {% if user.is_authenticated and not user.is_staff %}
+            <a href="https://sinsys.github.io/quiz-app-remastered/" class="btn btn-success" style="padding: 10px 20px; border-radius: 5px;">AM DONE!</a>
+        {% endif %}
+        
+            {% if user.is_authenticated and user.is_staff %}
+            <a href="https://certificate-generator-react-six.vercel.app/" class="btn btn-success" style="padding: 10px 20px; border-radius: 5px;">Generate Certificate</a>
+        {% endif %}
+        
+        </div>
+        <script type="text/javascript">
+            (function(d, t) {
+                var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+                v.onload = function() {
+                  window.voiceflow.chat.load({
+                    verify: { projectID: '663e8fd928f0b783e0713c68' },
+                    url: 'https://general-runtime.voiceflow.com',
+                    versionID: 'production'
+                  });
+                }
+                v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+            })(document, 'script');
+          </script>
+    </div>
+{% endblock %}
