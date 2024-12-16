@@ -32,10 +32,13 @@ def cart_detail(request):
 @login_required(login_url='/login')
 def cart_checkout(request):
     carts = Cart(request)
-    for cart in carts:
-        course = cart['course']
-        # course = get_object_or_404(Course, slug=course.slug)
+    for cart_item in carts:  # Iterate over cart items
+        if 'course' not in cart_item:
+            messages.error(request, 'Error: Course not found in cart!')
+            continue
+        course = cart_item['course']
         Enroll.objects.create(course=course, user_id=request.user.id)
     messages.success(request, 'Successfully checked out!')
     carts.clear()
     return redirect(reverse_lazy('cart:cart_detail'))
+

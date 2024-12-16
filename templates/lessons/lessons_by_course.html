@@ -43,13 +43,7 @@
                     </div>
                 </div>
             </div>
-            {% if user.is_authenticated and not user.is_staff %}
-            <a href="https://sinsys.github.io/quiz-app-remastered/" class="btn btn-success" style="padding: 10px 20px; border-radius: 5px;">AM DONE!</a>
-        {% endif %}
         
-            {% if user.is_authenticated and user.is_staff %}
-            <a href="https://certificate-generator-react-six.vercel.app/" class="btn btn-success" style="padding: 10px 20px; border-radius: 5px;">Generate Certificate</a>
-        {% endif %}
         
         </div>
         <script type="text/javascript">
