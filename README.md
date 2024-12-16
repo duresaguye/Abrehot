@@ -5,7 +5,13 @@
 Used Tech Stack
 
 1. Django
-2. Sqlite![Screenshot From 2024-12-16 20-18-32](https://github.com/user-attachments/assets/fc942e49-4850-4a27-b531-86e325559d7a)
+2. Sqlite
+Technology Stack
+
+    Backend: Django
+    Frontend: Django templates
+    Database: SQLite
+![Screenshot From 2024-12-16 20-18-32](https://github.com/user-attachments/assets/fc942e49-4850-4a27-b531-86e325559d7a)
 
 
 
